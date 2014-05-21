@@ -245,7 +245,11 @@ class Model extends Module
   @toJSON: ->
     @records
 
+  @beforeFromJSON: (objects) ->
+    return objects
+
   @fromJSON: (objects) ->
+    objects = @beforeFromJSON(objects)
     return unless objects
     if typeof objects is 'string'
       objects = JSON.parse(objects)
