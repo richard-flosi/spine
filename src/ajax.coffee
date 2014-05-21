@@ -210,6 +210,7 @@ class Singleton extends Base
 
   recordResponse: (options = {}) =>
     (data, status, xhr) =>
+      data = @model.fromJSON(data)
 
       Ajax.disable =>
         unless Spine.isBlank(data) or @record.destroyed
